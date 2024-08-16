@@ -1,7 +1,9 @@
 export type FindListOfAuthorByListOfIdsFacadeOutputDto = {
-  authorList: {
-    authorId: string;
-    name: string;
-    age: number;
-  }[];
+  authorList: AuthorDetail[];
+};
+
+export type AuthorDetail = {
+  authorId: string;
+  name: string;
+  age: number;
 };
