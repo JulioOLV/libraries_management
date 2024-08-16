@@ -2,8 +2,6 @@ import "reflect-metadata";
 
 import { DataSource } from "typeorm";
 
-import BookCollectionModel from "@/infrastructure/book-collection/model/typeorm/book-collection.model";
-import BookModel from "@/infrastructure/book/model/typeorm/book.model";
 import BookCollectionRepository from "./book-collection.repository";
 import { BookCollectionTheme } from "@/modules/book-collection-adm/domain/book-collection/enums/book-collection-theme.enums";
 import AuthorId from "@/modules/book-collection-adm/domain/book/value-object/author-id.value-object";
@@ -11,6 +9,8 @@ import LibraryId from "@/modules/book-collection-adm/domain/book-collection/valu
 import BookId from "@/modules/book-collection-adm/domain/book/value-object/book-id.value-object";
 import { SortFilter } from "@/modules/@shared/enums/sort.enum";
 import BookCollectionId from "@/modules/book-collection-adm/domain/book-collection/value-object/book-collection-id.value-object";
+import BookCollectionModel from "./book-collection.model";
+import BookModel from "../../../book/repository/typeorm/book.model";
 
 describe("BookCollectionRepository unit test", () => {
   let dataSource: DataSource;

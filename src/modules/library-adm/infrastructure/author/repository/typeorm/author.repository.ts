@@ -1,4 +1,3 @@
-import AuthorModel from "@/infrastructure/author/model/typeorm/author.model";
 import Author from "@/modules/library-adm/domain/author/entity/author.entity";
 import AuthorListNotFoundError from "@/modules/library-adm/domain/author/error/author-list-not-found.error";
 import AuthorNotFoundError from "@/modules/library-adm/domain/author/error/author-not-found.error";
@@ -6,6 +5,7 @@ import AuthorRepositoryInterface from "@/modules/library-adm/domain/author/repos
 import AuthorId from "@/modules/library-adm/domain/author/value-object/author-id.value-object";
 import Name from "@/modules/library-adm/domain/author/value-object/name.value-object";
 import { In } from "typeorm";
+import AuthorModel from "./author.model";
 
 export default class AuthorRepository implements AuthorRepositoryInterface {
   async findAuthorListByIdList(authorIdList: AuthorId[]): Promise<Author[]> {

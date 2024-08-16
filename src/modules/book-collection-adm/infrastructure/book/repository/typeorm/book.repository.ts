@@ -1,8 +1,8 @@
-import BookModel from "@/infrastructure/book/model/typeorm/book.model";
 import Book from "@/modules/book-collection-adm/domain/book/entity/book.entity";
 import { BookRepositoryInterface } from "@/modules/book-collection-adm/domain/book/repository/book.repository.interface";
 import BookId from "@/modules/book-collection-adm/domain/book/value-object/book-id.value-object";
 import { DataSource } from "typeorm";
+import BookModel from "./book.model";
 
 export default class BookRepository implements BookRepositoryInterface {
   private _dataSource: DataSource;

@@ -4,7 +4,7 @@ import {
 } from "./author.facade.interface";
 import AuthorFacadeFactory from "../factory/author.facade.factory";
 import { DataSource } from "typeorm";
-import AuthorModel from "@/infrastructure/author/model/typeorm/author.model";
+import AuthorModel from "@/modules/library-adm/infrastructure/author/repository/typeorm/author.model";
 
 describe("AuthorFacade unit test", () => {
   let dataSource: DataSource;

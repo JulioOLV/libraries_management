@@ -6,8 +6,7 @@ import {
   PrimaryColumn,
   Relation,
 } from "typeorm";
-
-import BookCollectionModel from "@/infrastructure/book-collection/model/typeorm/book-collection.model";
+import BookCollectionModel from "../../../book-collection/repository/typeorm/book-collection.model";
 
 @Entity({
   name: "books",

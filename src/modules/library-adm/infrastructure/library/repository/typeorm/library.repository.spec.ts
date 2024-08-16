@@ -1,6 +1,4 @@
 import { faker } from "@faker-js/faker";
-import AddressLibraryModel from "@/infrastructure/library/model/typeorm/address-library.model";
-import LibraryModel from "@/infrastructure/library/model/typeorm/library.model";
 import { DataSource } from "typeorm";
 import LibraryRepository from "./library.repository";
 import Library from "@/modules/library-adm/domain/library/entity/library.entity";
@@ -8,6 +6,8 @@ import LibraryId from "@/modules/library-adm/domain/library/value-object/library
 import Address from "@/modules/library-adm/domain/library/value-object/address.value-object";
 import { FindAllLibrariesFilter } from "@/modules/library-adm/domain/library/typings/library.repository.typing";
 import { SortFilter } from "@/modules/@shared/enums/sort.enum";
+import LibraryModel from "./library.model";
+import AddressLibraryModel from "./address-library.model";
 
 describe("LibraryRepository unit test", () => {
   let dataSource: DataSource;

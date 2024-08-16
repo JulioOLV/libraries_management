@@ -1,4 +1,3 @@
-import BookModel from "@/infrastructure/book/model/typeorm/book.model";
 import { DataSource } from "typeorm";
 import BookRepository from "./book.repository";
 import Book from "@/modules/book-collection-adm/domain/book/entity/book.entity";
@@ -6,7 +5,8 @@ import BookId from "@/modules/book-collection-adm/domain/book/value-object/book-
 import AuthorId from "@/modules/library-adm/domain/author/value-object/author-id.value-object";
 import Edition from "@/modules/book-collection-adm/domain/book/value-object/edition.value-object";
 import ReleaseYear from "@/modules/book-collection-adm/domain/book/value-object/release-year.value-object";
-import BookCollectionModel from "@/infrastructure/book-collection/model/typeorm/book-collection.model";
+import BookModel from "./book.model";
+import BookCollectionModel from "../../../book-collection/repository/typeorm/book-collection.model";
 
 describe("BookRepository unit test", () => {
   let dataSource: DataSource;

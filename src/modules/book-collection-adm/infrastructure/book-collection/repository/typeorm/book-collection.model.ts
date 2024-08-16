@@ -7,8 +7,8 @@ import {
   Relation,
 } from "typeorm";
 
-import BookModel from "@/infrastructure/book/model/typeorm/book.model";
 import { BookCollectionTheme } from "@/modules/book-collection-adm/domain/book-collection/enums/book-collection-theme.enums";
+import BookModel from "../../../book/repository/typeorm/book.model";
 
 @Entity({
   name: "book_collections",

@@ -1,7 +1,7 @@
-import AuthorModel from "@/infrastructure/author/model/typeorm/author.model";
 import { DataSource } from "typeorm";
 import AuthorRepository from "./author.repository";
 import AuthorId from "@/modules/library-adm/domain/author/value-object/author-id.value-object";
+import AuthorModel from "./author.model";
 
 describe("AuthorRepository unit tests", () => {
   let dataSource: DataSource;
