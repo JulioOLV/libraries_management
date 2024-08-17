@@ -3,10 +3,23 @@ import BookCollectionFactory from "@/modules/book-collection-adm/domain/book-col
 import BookCollectionRepositoryInterface from "@/modules/book-collection-adm/domain/book-collection/repository/book-collection.repository.interface";
 import { FindAllByThemeFilters } from "@/modules/book-collection-adm/domain/book-collection/typings/book-collection.repository.filters";
 import BookCollectionModel from "./book-collection.model";
+import BookCollectionId from "@/modules/book-collection-adm/domain/book-collection/value-object/book-collection-id.value-object";
 
 export default class BookCollectionRepository
   implements BookCollectionRepositoryInterface
 {
+  async createNewBookCollection(
+    entity: BookCollection
+  ): Promise<BookCollectionId> {
+    await BookCollectionModel.save({
+      id: entity.id.value,
+      libraryId: entity.libraryId.value,
+      theme: entity.theme,
+    });
+
+    return new BookCollectionId(entity.id.value);
+  }
+
   async findAllByTheme(
     filters: FindAllByThemeFilters
   ): Promise<BookCollection[]> {

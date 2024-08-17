@@ -1,15 +1,15 @@
-import BookCollectionModel from "@/infrastructure/book-collection/model/typeorm/book-collection.model";
+import BookCollectionModel from "@/modules/book-collection-adm/infrastructure/book-collection/repository/typeorm/book-collection.model";
 import BookFactory, { BookFactoryProps } from "../../book/factory/book.factory";
 import BookCollection from "../entity/book-collection.entity";
 import { BookCollectionTheme } from "../enums/book-collection-theme.enums";
 import BookCollectionId from "../value-object/book-collection-id.value-object";
 import LibraryId from "../value-object/library-id.value-object";
-import BookModel from "@/infrastructure/book/model/typeorm/book.model";
+import BookModel from "@/modules/book-collection-adm/infrastructure/book/repository/typeorm/book.model";
 
 export type BookCollectionProps = {
   id?: string;
   libraryId: string;
-  theme: BookCollectionTheme;
+  theme: string;
   books: BookFactoryProps[];
 };
 
@@ -18,7 +18,7 @@ export default class BookCollectionFactory {
     const bookCollection = new BookCollection({
       id: new BookCollectionId(props.id),
       libraryId: new LibraryId(props.libraryId),
-      theme: props.theme,
+      theme: props.theme as BookCollectionTheme,
     });
 
     props.books.forEach((book: BookFactoryProps) => {
@@ -30,6 +30,7 @@ export default class BookCollectionFactory {
           name: book.name,
           releaseYear: book.releaseYear,
           totalPages: book.totalPages,
+          availability: book.availability,
         })
       );
     });
@@ -52,6 +53,7 @@ export default class BookCollectionFactory {
               name: book.name,
               releaseYear: book.releaseYear,
               totalPages: book.totalPages,
+              availability: book.availability,
             } satisfies BookFactoryProps)
         ),
       })

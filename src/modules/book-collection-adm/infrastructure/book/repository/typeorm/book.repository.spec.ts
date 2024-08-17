@@ -53,5 +53,6 @@ describe("BookRepository unit test", () => {
     expect(bookInDb?.edition).toEqual(input.edition.value);
     expect(bookInDb?.releaseYear).toEqual(input.releaseYear.value);
     expect(bookInDb?.totalPages).toEqual(input.totalPages);
+    expect(bookInDb?.availability).toEqual(true);
   });
 });

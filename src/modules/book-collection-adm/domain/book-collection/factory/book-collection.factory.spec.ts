@@ -27,7 +27,7 @@ describe("BookCollectionFactory unit tests", () => {
     const newBookCollection = {
       id: uuid(),
       libraryId: uuid(),
-      theme: BookCollectionTheme.Ciencias,
+      theme: "Ciências",
       books,
     };
 
@@ -35,7 +35,7 @@ describe("BookCollectionFactory unit tests", () => {
 
     expect(bookCollection.id.value).toEqual(newBookCollection.id);
     expect(bookCollection.libraryId.value).toEqual(newBookCollection.libraryId);
-    expect(bookCollection.theme).toEqual(newBookCollection.theme);
+    expect(bookCollection.theme).toEqual(BookCollectionTheme.Ciencias);
     expect(bookCollection.books).toHaveLength(newBookCollection.books.length);
   });
 });

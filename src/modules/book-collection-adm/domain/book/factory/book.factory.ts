@@ -11,11 +11,12 @@ export type BookFactoryProps = {
   edition: number;
   releaseYear: number;
   totalPages: number;
+  availability: boolean;
 };
 
 export default class BookFactory {
   static create(props: BookFactoryProps): Book {
-    return new Book({
+    const book = new Book({
       id: new BookId(props.id),
       name: props.name,
       authorId: new AuthorId(props.authorId),
@@ -23,5 +24,11 @@ export default class BookFactory {
       releaseYear: new ReleaseYear(props.releaseYear),
       totalPages: props.totalPages,
     });
+
+    if (!props.availability) {
+      book.takeOutALoan();
+    }
+
+    return book;
   }
 }

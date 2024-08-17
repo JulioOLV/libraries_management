@@ -19,6 +19,7 @@ export default class BookRepository implements BookRepositoryInterface {
       name: input.name,
       releaseYear: input.releaseYear.value,
       totalPages: input.totalPages,
+      availability: input.availability,
     });
 
     return new BookId(input.id.value);

@@ -68,16 +68,23 @@ export default class FindBookCollectionByThemeUsecase
 
       const authorDetailList = await this.getAuthorDetailList(authorIdList);
 
-      output.push({
-        bookCollectionId: iterator.id.value,
-        books: this.resolveBooks(iterator.books, authorDetailList),
-        libraryId: iterator.libraryId.value,
-        theme: iterator.theme,
-        totalAmountOfBooks: iterator.totalAmountOfBooks,
-      });
+      output.push(this.mapToOuputObject(iterator, authorDetailList));
     }
 
     return output;
+  }
+
+  private mapToOuputObject(
+    iterator: BookCollection,
+    authorDetailList: AuthorDetail[]
+  ): FindBookCollectionByThemeOutputDto {
+    return {
+      bookCollectionId: iterator.id.value,
+      books: this.resolveBooks(iterator.books, authorDetailList),
+      libraryId: iterator.libraryId.value,
+      theme: iterator.theme,
+      totalAmountOfBooks: iterator.totalAmountOfBooks,
+    };
   }
 
   private async getAuthorDetailList(

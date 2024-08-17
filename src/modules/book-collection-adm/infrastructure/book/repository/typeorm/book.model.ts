@@ -30,6 +30,9 @@ export default class BookModel extends BaseEntity {
   @Column({ type: "varchar", length: 36, nullable: false })
   authorId!: string;
 
+  @Column({ type: "boolean", nullable: false })
+  availability!: boolean;
+
   @ManyToOne(
     () => BookCollectionModel,
     (bookCollection) => bookCollection.books

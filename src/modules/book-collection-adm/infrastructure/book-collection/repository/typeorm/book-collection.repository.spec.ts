@@ -11,6 +11,7 @@ import { SortFilter } from "@/modules/@shared/enums/sort.enum";
 import BookCollectionId from "@/modules/book-collection-adm/domain/book-collection/value-object/book-collection-id.value-object";
 import BookCollectionModel from "./book-collection.model";
 import BookModel from "../../../book/repository/typeorm/book.model";
+import BookCollection from "@/modules/book-collection-adm/domain/book-collection/entity/book-collection.entity";
 
 describe("BookCollectionRepository unit test", () => {
   let dataSource: DataSource;
@@ -45,6 +46,7 @@ describe("BookCollectionRepository unit test", () => {
       name: "book name",
       releaseYear: 2020,
       totalPages: 200,
+      availability: true,
     });
 
     const bookId2 = new BookId();
@@ -55,6 +57,7 @@ describe("BookCollectionRepository unit test", () => {
       name: "book name 2",
       releaseYear: 2020,
       totalPages: 200,
+      availability: false,
     });
 
     await dataSource
@@ -81,5 +84,25 @@ describe("BookCollectionRepository unit test", () => {
     });
 
     expect(results).toHaveLength(1);
+  });
+
+  it("should create a new book collection", async () => {
+    const repository = new BookCollectionRepository();
+    const bookCollection = new BookCollection({
+      id: new BookCollectionId("1"),
+      libraryId: new LibraryId("1"),
+      theme: BookCollectionTheme.Ciencias,
+    });
+
+    await repository.createNewBookCollection(bookCollection);
+
+    const bookCollectionInDb = await BookCollectionModel.findOne({
+      where: { id: "1" },
+    });
+
+    expect(bookCollectionInDb?.id).toBe("1");
+    expect(bookCollectionInDb?.libraryId).toBe("1");
+    expect(bookCollectionInDb?.theme).toBe(BookCollectionTheme.Ciencias);
+    expect(bookCollectionInDb?.books).toBe(undefined);
   });
 });
