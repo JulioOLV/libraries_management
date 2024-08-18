@@ -5,5 +5,6 @@ export default class AuthorNotFoundError extends Error {
     super(
       `AuthorNotFoundError: author with id ${authorId.value} not found in database.`
     );
+    this.name = "AuthorNotFoundError";
   }
 }

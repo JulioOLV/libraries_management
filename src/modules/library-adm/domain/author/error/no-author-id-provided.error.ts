@@ -3,5 +3,6 @@ export default class NoAuthorIdProvidedError extends Error {
     super(
       "NoAuthorIdProvidedError: no author id was provided in the list for search."
     );
+    this.name = "AuthorNotFoundError";
   }
 }

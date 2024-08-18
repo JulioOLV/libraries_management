@@ -5,5 +5,6 @@ export default class NoAuthorsFoundWithIdsError extends Error {
         ","
       )}.`
     );
+    this.name = "NoAuthorsFoundWithIdsError";
   }
 }

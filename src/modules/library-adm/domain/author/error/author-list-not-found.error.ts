@@ -7,5 +7,6 @@ export default class AuthorListNotFoundError extends Error {
         .map((authorId) => authorId.value)
         .join(",")} not found in database.`
     );
+    this.name = "AuthorListNotFoundError";
   }
 }
