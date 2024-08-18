@@ -11,7 +11,7 @@ export type BookFactoryProps = {
   edition: number;
   releaseYear: number;
   totalPages: number;
-  availability: boolean;
+  availability?: boolean;
 };
 
 export default class BookFactory {
@@ -25,7 +25,7 @@ export default class BookFactory {
       totalPages: props.totalPages,
     });
 
-    if (!props.availability) {
+    if (props.availability === false) {
       book.takeOutALoan();
     }
 
