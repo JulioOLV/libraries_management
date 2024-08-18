@@ -2,6 +2,9 @@ import { DataSource } from "typeorm";
 import AuthorRepository from "./author.repository";
 import AuthorId from "@/modules/library-adm/domain/author/value-object/author-id.value-object";
 import AuthorModel from "./author.model";
+import Author from "@/modules/library-adm/domain/author/entity/author.entity";
+import Name from "@/modules/library-adm/domain/author/value-object/name.value-object";
+import { faker } from "@faker-js/faker";
 
 describe("AuthorRepository unit tests", () => {
   let dataSource: DataSource;
@@ -94,5 +97,28 @@ describe("AuthorRepository unit tests", () => {
     expect(authorList[1].id.value).toEqual(authorId2.value);
     expect(authorList[1].age).toEqual(30);
     expect(authorList[1].name).toEqual("name author 2 surname author 2");
+  });
+
+  it("should create a new author", async () => {
+    const repository = new AuthorRepository();
+
+    const author = new Author({
+      name: new Name({
+        name: faker.person.firstName(),
+        surname: faker.person.lastName(),
+      }),
+      age: faker.number.int({ min: 20, max: 90 }),
+    });
+
+    const authorId = await repository.createAuthor(author);
+
+    const authorInDb = await AuthorModel.findOne({
+      where: { id: authorId.value },
+    });
+
+    expect(authorInDb?.id).toBe(authorId.value);
+    expect(authorInDb?.name).toBe(author.firstName);
+    expect(authorInDb?.surname).toBe(author.lastName);
+    expect(authorInDb?.age).toBe(author.age);
   });
 });

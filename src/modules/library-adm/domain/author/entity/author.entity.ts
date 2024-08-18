@@ -22,7 +22,18 @@ export default class Author extends Entity {
   }
 
   public get name(): string {
+    // TODO: renomear para fullName
     return this._name.fullName;
+  }
+
+  public get firstName(): string {
+    // TODO: renomear para name
+    return this._name.name;
+  }
+
+  public get lastName(): string {
+    // TODO: renomear para surname
+    return this._name.surname;
   }
 
   public get age(): number {

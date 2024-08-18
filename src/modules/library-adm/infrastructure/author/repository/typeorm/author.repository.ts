@@ -8,6 +8,22 @@ import { In } from "typeorm";
 import AuthorModel from "./author.model";
 
 export default class AuthorRepository implements AuthorRepositoryInterface {
+  async createAuthor(author: Author): Promise<AuthorId> {
+    try {
+      await AuthorModel.save({
+        id: author.id.value,
+        age: author.age,
+        name: author.firstName,
+        surname: author.lastName,
+      });
+
+      return author.id;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+
   async findAuthorListByIdList(authorIdList: AuthorId[]): Promise<Author[]> {
     try {
       const authorList = await AuthorModel.find({
@@ -32,6 +48,7 @@ export default class AuthorRepository implements AuthorRepositoryInterface {
           })
       );
     } catch (error) {
+      console.error(error);
       throw error;
     }
   }
@@ -57,6 +74,7 @@ export default class AuthorRepository implements AuthorRepositoryInterface {
         }),
       });
     } catch (error) {
+      console.error(error);
       throw error;
     }
   }
