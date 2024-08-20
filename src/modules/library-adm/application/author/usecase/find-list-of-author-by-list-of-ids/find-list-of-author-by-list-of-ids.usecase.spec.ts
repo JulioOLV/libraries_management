@@ -21,6 +21,7 @@ const MockRepository = () => {
   return {
     findAuthorById: jest.fn(),
     findAuthorListByIdList: jest.fn().mockReturnValue(Promise.resolve(authors)),
+    createAuthor: jest.fn(),
   };
 };
 

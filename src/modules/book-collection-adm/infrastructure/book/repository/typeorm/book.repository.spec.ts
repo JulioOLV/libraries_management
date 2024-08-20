@@ -7,6 +7,7 @@ import Edition from "@/modules/book-collection-adm/domain/book/value-object/edit
 import ReleaseYear from "@/modules/book-collection-adm/domain/book/value-object/release-year.value-object";
 import BookModel from "./book.model";
 import BookCollectionModel from "../../../book-collection/repository/typeorm/book-collection.model";
+import { faker } from "@faker-js/faker";
 
 describe("BookRepository unit test", () => {
   let dataSource: DataSource;
@@ -34,10 +35,10 @@ describe("BookRepository unit test", () => {
     const input = new Book({
       id: new BookId(),
       authorId: new AuthorId(),
-      edition: new Edition(1),
-      name: "book name",
-      releaseYear: new ReleaseYear(2020),
-      totalPages: 200,
+      edition: new Edition(faker.number.int({ min: 1, max: 5 })),
+      name: faker.commerce.productName(),
+      releaseYear: new ReleaseYear(faker.number.int({ min: 2005, max: 2024 })),
+      totalPages: faker.number.int({ min: 6, max: 500 }),
     });
 
     const output = await repository.registerBook(input);

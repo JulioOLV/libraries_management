@@ -1,6 +1,7 @@
 import LibraryId from "@/modules/library-adm/domain/library/value-object/library-id.value-object";
 import CreateLibraryUsecase from "./create-library.usecase";
 import { CreateLibraryUsecaseInputDto } from "./create-library.dto";
+import { faker } from "@faker-js/faker";
 
 const MockRepository = () => {
   return {
@@ -16,14 +17,14 @@ describe("CreateLibraryUsecase unit test", () => {
     const usecase = new CreateLibraryUsecase(repository);
 
     const input: CreateLibraryUsecaseInputDto = {
-      name: "Library 1",
+      name: faker.commerce.productName(),
       address: {
-        city: "City X",
-        district: "District X",
-        number: "10000",
-        state: "ST",
-        street: "Street X",
-        zipCode: "00000-000",
+        city: faker.location.city(),
+        district: faker.location.direction(),
+        number: faker.number.int().toString(),
+        state: faker.location.state({ abbreviated: true }),
+        street: faker.location.street(),
+        zipCode: faker.location.zipCode("#####-###"),
       },
     };
 

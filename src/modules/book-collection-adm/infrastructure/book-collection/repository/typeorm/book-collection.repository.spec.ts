@@ -12,6 +12,7 @@ import BookCollectionId from "@/modules/book-collection-adm/domain/book-collecti
 import BookCollectionModel from "./book-collection.model";
 import BookModel from "../../../book/repository/typeorm/book.model";
 import BookCollection from "@/modules/book-collection-adm/domain/book-collection/entity/book-collection.entity";
+import { faker } from "@faker-js/faker";
 
 describe("BookCollectionRepository unit test", () => {
   let dataSource: DataSource;
@@ -42,10 +43,10 @@ describe("BookCollectionRepository unit test", () => {
     await dataSource.getRepository<BookModel>(BookModel).save({
       id: bookId.value,
       authorId: authorId.value,
-      edition: 1,
-      name: "book name",
-      releaseYear: 2020,
-      totalPages: 200,
+      edition: faker.number.int({ min: 1, max: 5 }),
+      name: faker.commerce.productName(),
+      releaseYear: faker.number.int({ min: 2005, max: 2024 }),
+      totalPages: faker.number.int({ min: 6, max: 500 }),
       availability: true,
     });
 
@@ -53,10 +54,10 @@ describe("BookCollectionRepository unit test", () => {
     await dataSource.getRepository<BookModel>(BookModel).save({
       id: bookId2.value,
       authorId: authorId.value,
-      edition: 1,
-      name: "book name 2",
-      releaseYear: 2020,
-      totalPages: 200,
+      edition: faker.number.int({ min: 1, max: 5 }),
+      name: faker.commerce.productName(),
+      releaseYear: faker.number.int({ min: 2005, max: 2024 }),
+      totalPages: faker.number.int({ min: 6, max: 500 }),
       availability: false,
     });
 

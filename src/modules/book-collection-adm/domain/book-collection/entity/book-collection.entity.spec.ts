@@ -6,6 +6,7 @@ import BookCollectionId from "../value-object/book-collection-id.value-object";
 import AuthorId from "../../book/value-object/author-id.value-object";
 import { BookCollectionTheme } from "../enums/book-collection-theme.enums";
 import LibraryId from "../value-object/library-id.value-object";
+import { faker } from "@faker-js/faker";
 
 describe("BookCollectionEntity unit tests", () => {
   it("should return error when trying to remove a book that does not exist in collection in empty list situation", () => {
@@ -29,11 +30,13 @@ describe("BookCollectionEntity unit tests", () => {
       bookCollection.addBookToCollection(
         new Book({
           id: new BookCollectionId(),
-          name: "book name 1",
+          name: faker.commerce.productName(),
           authorId: new AuthorId(),
-          edition: new Edition(1),
-          releaseYear: new ReleaseYear(2000),
-          totalPages: 200,
+          edition: new Edition(faker.number.int({ min: 1, max: 5 })),
+          releaseYear: new ReleaseYear(
+            faker.number.int({ min: 2000, max: 2024 })
+          ),
+          totalPages: faker.number.int({ min: 6, max: 500 }),
         })
       );
 
@@ -60,11 +63,11 @@ describe("BookCollectionEntity unit tests", () => {
 
     const book = new Book({
       id: new BookCollectionId(),
-      name: "book name 1",
+      name: faker.commerce.productName(),
       authorId: new AuthorId(),
-      edition: new Edition(1),
-      releaseYear: new ReleaseYear(2000),
-      totalPages: 200,
+      edition: new Edition(faker.number.int({ min: 1, max: 5 })),
+      releaseYear: new ReleaseYear(faker.number.int({ min: 2000, max: 2024 })),
+      totalPages: faker.number.int({ min: 6, max: 500 }),
     });
 
     bookCollection.addBookToCollection(book);
@@ -84,19 +87,23 @@ describe("BookCollectionEntity unit tests", () => {
     const books = [
       new Book({
         id: new BookCollectionId(),
-        name: "book name 1",
+        name: faker.commerce.productName(),
         authorId: new AuthorId(),
-        edition: new Edition(1),
-        releaseYear: new ReleaseYear(2000),
-        totalPages: 200,
+        edition: new Edition(faker.number.int({ min: 1, max: 5 })),
+        releaseYear: new ReleaseYear(
+          faker.number.int({ min: 2000, max: 2024 })
+        ),
+        totalPages: faker.number.int({ min: 6, max: 500 }),
       }),
       new Book({
         id: new BookCollectionId(),
-        name: "book name 2",
+        name: faker.commerce.productName(),
         authorId: new AuthorId(),
-        edition: new Edition(1),
-        releaseYear: new ReleaseYear(2005),
-        totalPages: 150,
+        edition: new Edition(faker.number.int({ min: 1, max: 5 })),
+        releaseYear: new ReleaseYear(
+          faker.number.int({ min: 2000, max: 2024 })
+        ),
+        totalPages: faker.number.int({ min: 6, max: 500 }),
       }),
     ];
 
@@ -121,19 +128,23 @@ describe("BookCollectionEntity unit tests", () => {
     const books = [
       new Book({
         id: new BookCollectionId(),
-        name: "book name 1",
+        name: faker.commerce.productName(),
         authorId: new AuthorId(),
-        edition: new Edition(1),
-        releaseYear: new ReleaseYear(2000),
-        totalPages: 200,
+        edition: new Edition(faker.number.int({ min: 1, max: 5 })),
+        releaseYear: new ReleaseYear(
+          faker.number.int({ min: 2000, max: 2024 })
+        ),
+        totalPages: faker.number.int({ min: 6, max: 500 }),
       }),
       new Book({
         id: new BookCollectionId(),
-        name: "book name 2",
+        name: faker.commerce.productName(),
         authorId: new AuthorId(),
-        edition: new Edition(1),
-        releaseYear: new ReleaseYear(2005),
-        totalPages: 150,
+        edition: new Edition(faker.number.int({ min: 1, max: 5 })),
+        releaseYear: new ReleaseYear(
+          faker.number.int({ min: 2000, max: 2024 })
+        ),
+        totalPages: faker.number.int({ min: 6, max: 500 }),
       }),
     ];
 
